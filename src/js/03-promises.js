@@ -39,10 +39,10 @@ function createPromise(position, delay) {
   })   
 }
 
-function onSuccess(result){
+function onSuccess({ position, delay }){
   console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);
 }
 
-function onError(error){
+function onError({ position, delay }){
   console.log(`❌ Rejected promise ${position} in ${delay}ms`);
 }
