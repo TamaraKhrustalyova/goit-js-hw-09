@@ -7,19 +7,19 @@ refs.form.addEventListener ('submit', onFormSubmit);
 
 function onFormSubmit(e){
   e.preventDefault();
-  amount = Number(e.target.elements.amount.value);
-  delay = Number(e.target.elements.delay.value);
-  step = Number(e.target.elements.step.value);
+ const amount = Number(e.target.elements.amount.value);
+ let delay = Number(e.target.elements.delay.value);
+ const step = Number(e.target.elements.step.value);
 
 console.log(amount);
 console.log(delay);
 console.log(step);
 
-      for(let i=0; i <= amount; i += 1){
+      for(let i = 1; i <= amount; i += 1){
         createPromise(i, delay)
         .then(onSuccess).catch(onError);
-      }
-      delay += step;
+        delay += step;
+      }     
 } 
 
 function createPromise(position, delay) {

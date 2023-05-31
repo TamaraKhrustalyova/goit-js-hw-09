@@ -37,14 +37,14 @@ flatpickr(refs.input, options);
 function setDatesForCountdown(selectedDates){
     if(seletedDate < currentDate){
         alert('Please choose any valid date in the future');
-        return
+    
     } else {
         refs.startBtn.disabled = false;
         console.log("Countdown is ready to start. Please press start button"); 
     }
 }
 
-refs.startBtn.addEventListener('click', startCountdownTimer());
+refs.startBtn.addEventListener('click', startCountdownTimer);
 
 function startCountdownTimer(){
         setInterval(() => {
@@ -54,7 +54,8 @@ function startCountdownTimer(){
 
 function setTimer(){
     
-    if(seletedDate - Date.now() < 1000){
+    if(seletedDate - Date.now() < 0){
+        console.log('Time expired!')
         return
     } else {
         let timer = convertMs(seletedDate - Date.now());
