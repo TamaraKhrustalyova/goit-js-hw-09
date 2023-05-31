@@ -10,9 +10,13 @@ refs.form.addEventListener ('submit', onFormSubmit);
 
 function onFormSubmit(e){
   e.preventDefault();
-  amount = Number(refs.amount.value);
-  delay = Number(refs.delay.value);
-  step = Number(refs.step.value);
+  amount = Number(e.target.elements.amount.value);
+  delay = Number(e.target.elements.delay.value);
+  step = Number(e.target.elements.step.value);
+
+console.log(amount);
+console.log(delay);
+console.log(step);
 
       for(let i=0; i <= amount; i += 1){
         createPromise(i, delay)
@@ -23,16 +27,16 @@ function onFormSubmit(e){
 } 
 
 function createPromise(position, delay) {
-
-  return new Promise(resolve, reject);
+  return new Promise((res, rej) => {
     const shouldResolve = Math.random() > 0.3;
     setTimeout(() => {
         if (shouldResolve) {
-          resolve ({position, delay});
-        } else {
-          reject ({position, delay});
+          res ({ position, delay });
+        } else {  
+          rej ({ position, delay });
         }
     }, delay)
+  })   
 }
 
 function onSuccess(result){
