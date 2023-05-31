@@ -1,4 +1,4 @@
-
+import Notiflix from 'notiflix';
 import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.min.css";
 
@@ -19,7 +19,7 @@ let currentDate = Date.now();
 
 refs.startBtn.disabled = true;
 
-console.log('Please pick up any date in the future to start countdown')
+Notiflix.Notify.info('Please pick up any date in the future to start countdown')
 
 const options = {
     enableTime: true,
@@ -36,11 +36,11 @@ flatpickr(refs.input, options);
 
 function setDatesForCountdown(selectedDates){
     if(seletedDate < currentDate){
-        alert('Please choose any valid date in the future');
+        Notiflix.Notify.warning('Please choose any valid date in the future');
     
     } else {
         refs.startBtn.disabled = false;
-        console.log("Countdown is ready to start. Please press start button"); 
+        Notiflix.Notify.info('Countdown is ready to start. Please press start button'); 
     }
 }
 
@@ -55,7 +55,7 @@ function startCountdownTimer(){
 function setTimer(){
     
     if(seletedDate - Date.now() < 0){
-        console.log('Time expired!')
+        Notiflix.Notify.info('Time expired!');
         return
     } else {
         let timer = convertMs(seletedDate - Date.now());
