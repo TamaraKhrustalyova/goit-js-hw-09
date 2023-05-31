@@ -1,9 +1,6 @@
 
 const refs = {
     form: document.querySelector('form'),
-     delay: document.getElementsByName('dalay'),
-     step: document.getElementsByName('step'),
-     amount: document.getElementsByName('amount'),
 }
 
 refs.form.addEventListener ('submit', onFormSubmit);
