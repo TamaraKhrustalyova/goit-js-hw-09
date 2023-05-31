@@ -17,8 +17,7 @@ console.log(step);
 
       for(let i=0; i <= amount; i += 1){
         createPromise(i, delay)
-        .then(({ position, delay }) => onSuccess)
-        .catch(({ position, delay }) => onError)
+        .then(onSuccess).catch(onError);
       }
       delay += step;
 } 
