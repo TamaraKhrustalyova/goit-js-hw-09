@@ -13,7 +13,7 @@ const refs = {
 
 const TIMER_DELAY = 1000;
 
-let seletedDate = 0;
+let selectedDate = 0;
 let currentDate = Date.now();
 
 
@@ -27,15 +27,15 @@ const options = {
     defaultDate: new Date(),
     minuteIncrement: 1,
     onClose(selectedDates) {
-        seletedDate = selectedDates[0].getTime(); 
-        setDatesForCountdown(seletedDate);
+        selectedDate = selectedDates[0].getTime(); 
+        setDatesForCountdown(selectedDate);
     },
   };
 
 flatpickr(refs.input, options); 
 
-function setDatesForCountdown(selectedDates){
-    if(seletedDate < currentDate){
+function setDatesForCountdown(selectedDate){
+    if(selectedDate < currentDate){
         Notiflix.Notify.warning('Please choose any valid date in the future');
     
     } else {
@@ -47,18 +47,17 @@ function setDatesForCountdown(selectedDates){
 refs.startBtn.addEventListener('click', startCountdownTimer);
 
 function startCountdownTimer(){
-        setInterval(() => {
-            setTimer() 
-    }, TIMER_DELAY)
+    setInterval(() => {
+        setTimer()     
+    }, TIMER_DELAY)    
 }
 
 function setTimer(){
-    
-    if(seletedDate - Date.now() < 0){
-        
+    if(selectedDate - Date.now() < 0){
+        Notiflix.Notify.info('Time expired'); 
         return
     } else {
-        let timer = convertMs(seletedDate - Date.now());
+        let timer = convertMs(selectedDate - Date.now());
 
             refs.days.textContent = timer.days;
             refs.hours.textContent = timer.hours;
