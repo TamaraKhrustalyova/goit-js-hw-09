@@ -55,7 +55,7 @@ function startCountdownTimer(){
 function setTimer(){
     
     if(seletedDate - Date.now() < 0){
-        Notiflix.Notify.info('Time expired!');
+        
         return
     } else {
         let timer = convertMs(seletedDate - Date.now());
