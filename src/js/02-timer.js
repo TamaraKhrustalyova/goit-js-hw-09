@@ -47,13 +47,15 @@ function setDatesForCountdown(selectedDate){
 refs.startBtn.addEventListener('click', startCountdownTimer);
 
 function startCountdownTimer(){
-    setInterval(() => {
+    timerID = setInterval(() => {
         setTimer()     
     }, TIMER_DELAY)    
+    
 }
 
 function setTimer(){
     if(selectedDate - Date.now() < 0){
+        clearInterval(timerID);
         Notiflix.Notify.info('Time expired'); 
         return
     } else {
